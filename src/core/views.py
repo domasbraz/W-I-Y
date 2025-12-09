@@ -56,3 +56,6 @@ def sign_out(request):
 def default(request):
     return redirect("home")
 
+def elements(request):
+    return render(request, "elements.html")
+
