@@ -1,38 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Login</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'master.css' %}">
-        <link rel="stylesheet" href="{% static 'login.css' %}">
-        <script src="{% static 'login.js' %}"></script>
-    </head>
-    <body>
-        <div class="loginContainer">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'master.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <script src="{% static 'login.js' %}"></script>
+</head>
+<body>
+    <div class="loginContainer">
 
-            <div class="formContainer">
+        <div class="formContainer">
 
-                <form method="POST" action="/login/" onsubmit="loading()">
-                    {% csrf_token %}
-                    <h1>Login</h1>
-                    <p class="error">{{ error }}</p>
-                    <label>Username</label><br>
-                    <input type="text" name="username" class="inputField">
-                    <br><br>
-        
-                    <label>Password</label><br>
-                    <input type="password" name="password" class="inputField">
-                    <br><br>
-        
-                    <input type="submit" value="Login" class="btn"></input>
-                </form>
-            </div>
-
+            <form method="POST" action="/login/" onsubmit="loading()">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <p class="error">{{ error }}</p>
+                <label>Username</label><br>
+                <input type="text" name="username" class="inputField">
+                <br><br>
+    
+                <label>Password</label><br>
+                <input type="password" name="password" class="inputField">
+                <br><br>
+    
+                <input type="submit" value="Login" class="btn"></input>
+            </form>
         </div>
-        
-        <div class="loadingScreen"></div>
-    </body>
+
+    </div>
+    
+    <div class="loadingScreen"></div>
+</body>
 </html>
