@@ -30,7 +30,7 @@ nav
     z-index: 99;
 }
 
-ul
+nav > ul
 {
     list-style: none;
     height: inherit;
@@ -39,7 +39,7 @@ ul
     gap: 5%;
 }
 
-li
+nav > ul > li
 {
     display: inherit;
     list-style: none;
@@ -47,13 +47,13 @@ li
     user-select: none;
 }
 
-a:hover
+nav > ul> li > a:hover
 {
     cursor: pointer;
     background-color: rgb(72, 72, 72);
 }
 
-a
+nav > ul> li > a
 {
     border-radius: 10px;
     font-size: 30px;

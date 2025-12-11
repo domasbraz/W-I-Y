@@ -1,17 +1,64 @@
-const nav = `<nav>
-    <ul>
-        <li><a href='#'>Item</a></li>
-        <li><a href='#'>Item</a></li>
-        <li><a href='#'>Item</a></li>
-    </ul>
-</nav>`
-
-const htmlSnippets = new Map([["navbarSnippet", nav]])
+import htmlSnippets from "./elementsHTMLSnippets.js"
+import cssSnippets from "./elementsCSSSnippets.js"
 
 htmlSnippets.forEach((value, key) => 
 {
     loadSnippetPreview(key, value)
 })
+
+let btns = document.getElementsByTagName("button")
+
+for (let i = 0; i < btns.length; i++)
+{
+    let btn = btns[i]
+
+    let classes = btn.classList
+
+    if (classes.contains("codeTab"))
+    {
+        btn.addEventListener("click", displayTab)
+        continue
+    }
+    if (classes.contains("copyText"))
+    {
+        btn.addEventListener("click", copyToClipboard)
+        continue
+    }
+}
+
+function displayTab(event)
+{
+    let element = event.target
+
+    let classes = element.classList
+
+    // note to self: this can be made better
+    if (classes.contains("previewTab"))
+    {
+        displayPreview(element)
+        return
+    }
+    if (classes.contains("htmlTab"))
+    {
+        displayHTML(element)
+        return
+    }
+    if (classes.contains("cssTab"))
+    {
+        displayCSS(element)
+        return
+    }
+    if (classes.contains("fullTab"))
+    {
+        displayFull(element)
+        return
+    }
+}
+
+function copyToClipboard(event)
+{
+    // TODO
+}
 
 function loadSnippetPreview(key, value)
 {
@@ -74,7 +121,30 @@ function displayHTML(element)
     let copyElement = snippetElement.getElementsByClassName("copy")[0]
     copyElement.style.display = "flex"
 
+    codeTag.appendChild(codeText)
+}
+
+function displayCSS(element)
+{
+    setActive(element)
+
+    let snippetElement = element.parentElement.parentElement.parentElement
+
+    let cssSnippet = cssSnippets.get(snippetElement.id)
+    cssSnippet = cssSnippet.replaceAll("<style>", "")
+    cssSnippet = cssSnippet.replaceAll("</style>", "")
+    cssSnippet = cssSnippet.trim()
+    let codeText = document.createTextNode(cssSnippet)
+
+    let codeTag = snippetElement.getElementsByTagName("code")[0]
+    codeTag.innerHTML = ""
+    codeTag.style.display = "block"
+
+    let sampTag = snippetElement.getElementsByTagName("samp")[0]
+    sampTag.style.display = "none"
+
+    let copyElement = snippetElement.getElementsByClassName("copy")[0]
+    copyElement.style.display = "flex"
 
     codeTag.appendChild(codeText)
-
 }
