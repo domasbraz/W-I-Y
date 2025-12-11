@@ -78,6 +78,7 @@ nav > ul> li > a
     flex-wrap: wrap;
     width: 95%;
     margin: auto;
+    gap: 1%;
 }
 
 .contentHeading
@@ -90,13 +91,19 @@ nav > ul> li > a
 {
     width: 30%;
     height: 40%;
+    border: 5px double white;
+    padding: 1%;
+    border-radius: 10px;
+    margin-bottom: 1%;
 }
 
-
-
-.snippet
+.snippetHeading
 {
-    border: 0px solid blue;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    padding-bottom: 1%;
 }
 
 .tabs
@@ -156,6 +163,7 @@ code
     margin: 0;
     line-height: normal;
     user-select: text;
+    font-size: large;
 }
 
 .preview
