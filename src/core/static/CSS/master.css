@@ -176,3 +176,21 @@ code
 {
     cursor: pointer;
 }
+
+.copyText:hover
+{
+    cursor: pointer;
+}
+
+.tooltip
+{
+    position: absolute;
+    background-color: gray;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 1%;
+    border-radius: 10px;
+    border: 2px solid rgb(86, 86, 86);
+    display: none;
+}

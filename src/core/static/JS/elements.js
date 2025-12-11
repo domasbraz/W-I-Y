@@ -57,7 +57,12 @@ function displayTab(event)
 
 function copyToClipboard(event)
 {
-    // TODO
+    let element = event.target
+    element = element.parentElement.parentElement.parentElement
+    let codeTag = element.getElementsByTagName("code")[0]
+
+    navigator.clipboard.writeText(codeTag.textContent)
+    animateTooltip(element)
 }
 
 function loadSnippetPreview(key, value)
@@ -147,4 +152,66 @@ function displayCSS(element)
     copyElement.style.display = "flex"
 
     codeTag.appendChild(codeText)
+}
+
+function displayFull(element)
+{
+    setActive(element)
+
+    let snippetElement = element.parentElement.parentElement.parentElement
+
+    let cssSnippet = cssSnippets.get(snippetElement.id)
+
+    let htmlSnippet = htmlSnippets.get(snippetElement.id)
+
+    let htmlText = document.createTextNode(htmlSnippet)
+    let cssText = document.createTextNode(cssSnippet)
+
+    let codeTag = snippetElement.getElementsByTagName("code")[0]
+    codeTag.innerHTML = ""
+    codeTag.style.display = "block"
+
+    let sampTag = snippetElement.getElementsByTagName("samp")[0]
+    sampTag.style.display = "none"
+
+    let copyElement = snippetElement.getElementsByClassName("copy")[0]
+    copyElement.style.display = "flex"
+
+    codeTag.appendChild(htmlText)
+    codeTag.innerHTML += "<br><br>" 
+    codeTag.appendChild(cssText)   
+}
+let tooltipAnimation = null
+function animateTooltip(element) 
+{
+    clearInterval(tooltipAnimation)
+    let tooltip = element.parentElement.parentElement.getElementsByClassName("tooltip")[0]
+    let pos = 0;
+    let opacity = 100;
+    tooltip.style.marginTop = "0"
+    tooltip.style.opacity = "100%"
+    tooltip.style.display = "block"
+    tooltipAnimation = setInterval(frame, 1)
+    function frame() 
+    {
+        if (pos <= -40) 
+        {
+
+            if (opacity <= 0)
+            {
+                tooltip.style.display = "none"
+                clearInterval(tooltipAnimation)
+            }
+            else
+            {
+                opacity -= 0.2
+                tooltip.style.opacity = opacity + "%"
+            }
+        } 
+        else 
+        {
+            pos -= 0.25;
+            tooltip.style.marginTop = pos + "px"
+        }
+    }
 }

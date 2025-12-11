@@ -27,7 +27,10 @@
                     <button class="codeTab fullTab">FULL</button>
                 </span>
                 <pre>
-                <span class="copy"><button class="copyText"><image src="{% static 'assets/copy2_grey.svg' %}" height="30px"></image>Copy</button></span>
+                    <span class="copy">
+                        <button class="copyText "><image src="{% static 'assets/copy2_grey.svg' %}" height="30px" draggable="false"></image>Copy</button>
+                        <span class="tooltip" id="animate">Copied</span>
+                    </span>
                     <code></code>
                     <samp></samp>
                 </pre>
