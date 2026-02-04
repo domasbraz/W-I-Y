@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': os.environ['POSTGRES_DB'],
         'USER': os.environ['POSTGRES_USER'],
         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
+        'HOST': "db",
         'PORT': os.environ['DB_PORT'],
     }
 }
@@ -135,7 +135,8 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesSto
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "wiy.local"
+    "wiy.local",
+    "raspberrypi"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
