@@ -8,4 +8,7 @@ services:
       - "8001:8000"
     volumes:
       - ./src:/app
+    environment:
+      - DEBUG=True
+      - ALLOWED_HOSTS=raspberrypi,localhost
 

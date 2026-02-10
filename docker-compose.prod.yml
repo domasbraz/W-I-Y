@@ -1,4 +1,8 @@
 services:
   web:
-    image: wiy:0.3.1
+    image: wiy:0.3.2.1
     restart: unless-stopped
+    environment:
+      - DEBUG=False
+      - ALLOWED_HOSTS=raspberrypi
+      - SECRET_KEY=${SECRET_KEY}

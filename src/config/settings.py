@@ -21,13 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8l8ntf3i9g2-ha7gf(n55ufqg37cw1p6fl6t*%ql@jr8m_rg*-'
+#SECRET_KEY = 'django-insecure-8l8ntf3i9g2-ha7gf(n55ufqg37cw1p6fl6t*%ql@jr8m_rg*-'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+#DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # Application definition
 
@@ -132,12 +131,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Browser may attempt to optimise load times by caching static files, this bypasses it
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-ALLOWED_HOSTS = [
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+
+""" ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "wiy.local",
     "raspberrypi"
-]
+] """
 
 CSRF_TRUSTED_ORIGINS = [
     "http://wiy.local"

@@ -4,11 +4,14 @@ from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.conf import settings
 
 def index(request):
-    if request.user.is_authenticated:
-        return render(request, "index.html")
-    return redirect("login")
+    if settings.DEBUG:
+        if request.user.is_authenticated:
+            return render(request, "index.html")
+        return redirect("login")
+    return render(request, "index.html")
 
 def register(request):
     if request.method == "POST":
